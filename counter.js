@@ -13,7 +13,7 @@ var Counter = mongoose.model('Counter', {
 });
 
 function getCounter(counterName){
-	return Counter.find().exec().then(function(counter){
+	return Counter.findOne(counterName).exec().then(function(counter){
 		if(!counter) {
 			counter = new Counter({count:0});
 			return counter.save();
@@ -27,7 +27,7 @@ getCounter('visits');
 
 getCounter('returns');
 
-function incrementCounter() {
+/*function incrementCounter() {
 	return getCounter().then(function(counter){
 		counter.count++;
 		return counter.save();
@@ -36,4 +36,4 @@ function incrementCounter() {
 
 incrementCounter().then(function(counter){
 	console.log('This program has been run ', counter.count, 'times!')
-});
+});*/
