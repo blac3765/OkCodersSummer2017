@@ -21,6 +21,12 @@ function getCounter(counterName){
 	});
 }
 
+getCounter('start');
+
+getCounter('visits');
+
+get Counter('returns');
+
 function incrementCounter() {
 	return getCounter().then(function(counter){
 		counter.count++;
