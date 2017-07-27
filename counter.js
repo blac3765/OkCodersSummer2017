@@ -13,11 +13,12 @@ var Counter = mongoose.model('Counter', {
 });
 
 function getCounter(counterName){
-	return Counter.findOne(counterName).exec().then(function(counter){
+	return Counter.findOne({name: counterName}).exec().then(function(counter){
 		if(!counter) {
 			counter = new Counter({count:0});
 			return counter.save();
 		}
+		return counter
 	});
 }
 
