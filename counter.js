@@ -18,7 +18,7 @@ function getCounter(counterName){
 			counter = new Counter({count:0, name: counterName);
 			return counter.save();
 		}
-		return counter
+		return counter;
 	});
 }
 
