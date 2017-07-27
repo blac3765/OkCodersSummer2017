@@ -25,7 +25,7 @@ getCounter('start');
 
 getCounter('visits');
 
-get Counter('returns');
+getCounter('returns');
 
 function incrementCounter() {
 	return getCounter().then(function(counter){
