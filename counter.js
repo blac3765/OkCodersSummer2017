@@ -28,13 +28,21 @@ getCounter('visits');
 
 getCounter('returns');
 
-/*function incrementCounter() {
-	return getCounter().then(function(counter){
+function incrementCounter(counterName) {
+	return getCounter(counterName).then(function(counter){
 		counter.count++;
 		return counter.save();
 	});
 }
 
-incrementCounter().then(function(counter){
-	console.log('This program has been run ', counter.count, 'times!')
-});*/
+incrementCounter('start').then(function(counter){
+	console.log('Program has been started ', counter.count, 'times!')
+});
+
+incrementCounter('visits').then(function(counter){
+	console.log('Program has been visited ', counter.count, 'times!')
+});
+
+incrementCounter('returns').then(function(counter){
+	console.log('Visitors have returned ', counter.count, 'times!')
+});
