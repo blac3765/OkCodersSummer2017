@@ -12,25 +12,12 @@ var Counter = mongoose.model('Counter', {
 	name: String
 });
 
-function getCounter(){
-	return Counter.find({name:'returns'}).exec().then(function(counter){
+function getCounter(counterName){
+	return Counter.find().exec().then(function(counter){
 		if(!counter) {
 			counter = new Counter({count:0});
 			return counter.save();
 		}
-		return counter;
-		return Counter.find({name:'visits'}).exec().then(function(counter){
-			if(!counter) {
-				counter = new Counter({count:0});
-				return counter.save();
-			}
-			return counter;
-			return Counter.find({name:'start'}).exec().then(function(counter){
-				if(!counter) {
-					counter = new Counter({count:0});
-					return counter.save();
-				}
-				return counter;
 	});
 }
 
@@ -44,26 +31,3 @@ function incrementCounter() {
 incrementCounter().then(function(counter){
 	console.log('This program has been run ', counter.count, 'times!')
 });
-
-/*var app = express();								// Create our express application
-app.use(express.static('./public'));				// Serve our static content out of public/
-app.use(bodyParser.json());								// Use the bodyParser to parse our POST requests
-app.listen(3000, function() {						// Start our server
-	console.log('Listening on http://localhost:3000');
-});
-
-
-var Item = require('./models/item');				// Import our Item model (defined in models/item.js)
-
-app.get('/items', function(req,res) {				// Define a GET /items route
-	Item.find().exec().then(function(items) {		// Find all items
-		res.json(items);							// Return all items found
-	});
-});
-
-app.post('/items', function(req,res) {				// Define a POST /items route
-	var item = new Item(req.body);					// Create a new item document from the body
-	item.save().then(function() {					// Save the item and then...
-		res.json(true);								// Return true (true has no meaning here, we easily could return the item we just created)
-	});
-});*//
