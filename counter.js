@@ -15,7 +15,7 @@ var Counter = mongoose.model('Counter', {
 function getCounter(counterName){
 	return Counter.findOne({name: counterName}).exec().then(function(counter){
 		if(!counter) {
-			counter = new Counter({count:0});
+			counter = new Counter({count:0}, {name: counterName);
 			return counter.save();
 		}
 		return counter
